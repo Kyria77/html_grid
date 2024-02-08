@@ -1,0 +1,206 @@
+/*********************ESTRUCTURA*****************/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}/*Quitar bordes y márgenes que tiene navegador por defecto*/
+body{
+    min-height: 100vh; /*La altura mínima de la página sea 100 viewport, toda la pantalla*/
+    max-width: 100%;
+    display: grid;
+    grid-template-areas: 
+    "myheader myheader myheader"
+    "mynav mynav mynav"
+    "mymain mymain mymain"
+    "myaside myaside myaside"
+    "myfooter myfooter myfooter"; /*Creación estructura de las áreas*/
+    grid-template-rows: 100px auto 1fr auto 100px;
+    grid-template-columns: 100%;
+}
+
+header{
+    grid-area: myheader;
+    background-color:aquamarine;
+}
+
+nav{
+    grid-area: mynav;
+    background-color:white;
+}
+main{
+    grid-area: mymain;
+    background-color: bisque;
+}
+aside{
+    grid-area: myaside;
+    background-color: blueviolet;
+}
+footer{
+    grid-area: myfooter;
+    background-color: coral;
+}
+/********************HEADER****************/
+header{
+    display: flex;
+    text-align: center;
+    /*flex-direction: column;*/
+    padding: 15px;
+}
+.logo{
+    width: 150px;
+    height: 100%;
+}
+h1{
+    margin-left: 20px;
+}
+/**************BARRA NAVEGACION*******************/
+nav ul{
+    display: flex;
+    flex-direction: column; /*En la versión móvil queremos que estén en columna*/
+    list-style: none;
+}
+nav ul li a{
+    padding: 5px 10px;
+    color: black;
+    text-decoration: none;
+    line-height: 30px;
+}
+nav ul li .noestoy:hover{
+    background-color: black;
+    color: white;
+}
+nav ul li .estoy{
+    color: white;
+    background-color: black;
+}
+/******************MAIN**************************/
+section{
+    display: flex;
+    flex-direction: column;
+}
+section article{
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+}
+/*****************BARRA LATERAL********************/
+aside{
+    background-color: azure;
+    padding: 10px;
+}
+aside .cascada{
+    display: none;
+}
+aside ul{
+    list-style: none;
+}
+aside ul a{
+    color: black;
+    line-height: 30px;
+    text-decoration: none;
+}
+/****************FOOTER**********************/
+footer{
+    padding: 10px;
+    text-align: center;
+}
+
+/*---Pantalla mediana tablet-------*/
+
+@media (min-width: 768px) and (max-width: 1023px){
+    body{
+        grid-template-areas: 
+        "myheader myheader myheader"
+        "mynav mynav mynav"
+        "myaside mymain mymain"
+        "myfooter myfooter myfooter"; /*Creación estructura de las áreas*/
+        grid-template-rows: 150px 50px 1fr 100px;
+        grid-template-columns: 200px 1fr 200px;
+    }
+    header{
+        justify-content: center;
+        text-align: center;
+    }
+    nav ul{
+        flex-direction: row;
+    }
+    nav ul li a{
+        padding: 5px 10px;
+        color: black;
+        text-decoration: none;
+        line-height: 30px;
+    }
+    section{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    section article{
+        width: 46%;
+    }
+    aside{
+        padding: 15px;
+    }
+    aside .cascada{
+        display: block;
+        width: 90%;
+        position: relative;
+        left: 9px;
+        margin-bottom: 10px;
+    }
+
+}
+
+/*---Pantalla grande-------*/
+
+@media (min-width: 1024px){
+    body{
+        grid-template-areas: 
+        "myheader myheader myheader"
+        "mynav mynav mynav"
+        "mymain mymain myaside"
+        "myfooter myfooter myfooter"; /*Creación estructura de las áreas*/
+        grid-template-rows: 150px 50px 1fr 100px;
+        grid-template-columns: 200px 1fr 350px;
+    }
+    header{
+        justify-content: center;
+        text-align: center;
+    }
+    header img{
+        width: 25%;
+    }/*Esto es para darle proporcion de anchura a cada parte del header*/
+    header h1{
+        width: 75%;
+    }/*La otra anchura*/
+    nav ul{
+        flex-direction: row;
+        justify-content: center;
+    }
+    nav ul li a{
+        padding: 5px 20px;
+        color: black;
+        text-decoration: none;
+        line-height: 30px;
+    }
+    section{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    section article{
+        width: 46%;
+    }
+    aside{
+        padding: 15px;
+    }
+    aside .cascada{
+        display: block;
+        width: 90%;
+        position: relative;
+        left: 9px;
+        margin-bottom: 10px;
+    }
+
+}
